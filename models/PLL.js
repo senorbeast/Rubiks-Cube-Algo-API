@@ -1,12 +1,19 @@
 const { model, Schema } = require("mongoose");
 
 const PLLSchema = new Schema({
-    name: String,
+    nameAlg: String,
+    recogn: String,
     alglist: [
         {
+            //alginfo
             alg: String,
-            rating: Number,
-            recogn: String,
+            rating: [
+                {
+                    //like
+                    createdAt: String,
+                    username: String,
+                },
+            ],
         },
     ],
 });

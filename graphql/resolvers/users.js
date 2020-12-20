@@ -68,6 +68,7 @@ module.exports = {
             //Check if a User doesn't already exits
             const user = await User.findOne({ username });
             if (user) {
+                console.log("Bro Uesr exist", user);
                 throw new UserInputError("Username is taken", {
                     errors: {
                         username: "This username is taken",
