@@ -1,5 +1,11 @@
 const userResolvers = require("./users");
+const pllResolvers = require("./pll");
 
 module.exports = {
-    Query: {},
+    Query: {
+        ...pllResolvers.Query,
+    },
+    Mutation: {
+        ...userResolvers.Mutation,
+    },
 };
