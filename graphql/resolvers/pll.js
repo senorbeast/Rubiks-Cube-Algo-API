@@ -36,14 +36,13 @@ module.exports = {
         addAlg: async (_, { pllId, alg }, context) => {
             const user = checkAuth(context);
             if (alg.trim() === "") {
-                throw new UserInputError("Algorithm empty", {
+                throw new UserInputError("Algorithm field empty", {
                     errors: {
                         alg: "Algorithm must not be empty",
                     },
                 });
             }
             const algf = await PLL.findOne({ "alglist.alg": alg });
-            console.log("Bro ALgo exist", algf);
             if (algf) {
                 throw new UserInputError("Algorithm already exist", {
                     errors: {
