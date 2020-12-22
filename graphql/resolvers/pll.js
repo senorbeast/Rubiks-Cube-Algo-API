@@ -27,7 +27,14 @@ module.exports = {
     Mutation: {
         async addPLL(_, { nameAlg, recogn }, context) {
             const user = checkAuth(context);
-            console.log("Hi authenticated User");
+            const algN = await PLL.findOne({ nameAlg });
+            if (algN) {
+                throw new UserInputError("Algorithm Case already exist", {
+                    errors: {
+                        nameAlg: "Algorithm Case already exist",
+                    },
+                });
+            }
             //Following code will run only if no Errors are thrown (i.e User is authenticated)
             const newPLL = new PLL({ nameAlg, recogn });
             const pll = await newPLL.save();

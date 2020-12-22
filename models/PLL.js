@@ -3,6 +3,11 @@ const { model, Schema } = require("mongoose");
 const PLLSchema = new Schema({
     nameAlg: String,
     recogn: String,
+    scrambles: [
+        {
+            scramble: String,
+        },
+    ],
     alglist: [
         {
             //alginfo
